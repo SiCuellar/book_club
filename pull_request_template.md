@@ -36,8 +36,3 @@ closes #
 
 
 
-Collapse 
-
-Message Input
-
-Message @Nick Lindeberg 
