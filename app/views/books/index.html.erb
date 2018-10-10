@@ -4,8 +4,7 @@
   <h2> Title: <%= book.title %></h2>
   <p>Publication year: <%= book.year %> </p>
   <p>Page Count: <%= book.page_count %> </p>
-  <p>Author(s): <%= book.authors.each do |author| %>
-                            binding.pry
+  <p>Author(s): <% book.authors.each do |author| %>
                 <%=                    author.name %>
                 <%                            end %>
 <% end %>
