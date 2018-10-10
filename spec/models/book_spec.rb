@@ -8,6 +8,6 @@ describe Book, type: :model do
 
 
   describe 'Relationship' do
-    it { should have_many(:author) }
+    it { should have_many(:authors) }
   end
 end
