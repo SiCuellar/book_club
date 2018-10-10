@@ -1,7 +1,10 @@
-<h1> Welcome to the book Pub </h1>
+<h1> Welcome to the Book Pub </h1>
 
 <% @books.each do |book| %>
-<%= book.title %>
-<%= book.year %>
-<%= book.page_count %>
+  <h2> Title: <%= book.title %></h2>
+  <p>Publication year: <%= book.year_published %> </p>
+  <p>Page Count: <%= book.page_count %> </p>
+  <p>Author(s): <% book.authors.each do |author| %>
+                <%=                    author.name %>
+                <%                            end %>
 <% end %>
