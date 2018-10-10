@@ -20,7 +20,6 @@ describe 'book index' do
 
     visit 'books'
 
-    save_and_open_page
     expect(page).to have_content("Title: #{book_1.title}")
     expect(page).to have_content("Publication year: #{book_1.year}")
     expect(page).to have_content("Title: #{book_2.title}")

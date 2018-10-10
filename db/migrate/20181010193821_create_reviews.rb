@@ -1,4 +1,4 @@
-class CreateReview < ActiveRecord::Migration[5.1]
+class CreateReviews < ActiveRecord::Migration[5.1]
   def change
     create_table :reviews do |t|
       t.string :title
@@ -11,4 +11,3 @@ class CreateReview < ActiveRecord::Migration[5.1]
     end
   end
 end
-f
