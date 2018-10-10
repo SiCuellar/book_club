@@ -1,3 +1,4 @@
+require 'pry'
 require 'rails_helper'
 
 describe 'book index' do
@@ -7,6 +8,7 @@ describe 'book index' do
     book_3 = Book.create(title: "Crime and Punishment", page_count: 458, year: 1866)
 
     visit 'books'
+    binding.pry
 
     expect(page).to have_content("Title: #{book_1.title}")
     expect(page).to have_content("Publication year:#{book_1.year}")
