@@ -37,10 +37,18 @@ describe 'book index' do
   end
 
   it 'user can see total book ratings and average' do
-
     visit '/books'
 
-    expect(page).to have_content("Rating: #{2.25}")
+    expect(page).to have_content("Rating: 2.25")
   end
+
+  # describe 'user can see the correct range for rating value' do
+  #   visit '/books'
+  #
+  #   it  {should validate_numericality_of(:rating)
+  #     is_less_tha _or_eaqula_to(5)}
+  #   end
+  #
+  # end
 
 end
