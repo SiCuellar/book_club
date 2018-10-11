@@ -39,7 +39,9 @@ describe 'book index' do
   it 'user can see total book ratings and average' do
     visit '/books'
 
-    expect(page).to have_content("Rating: 2.25")
+    expect(page).to have_content("Rating: 2.3")
+    expect(page).to have_content("Total Reviews: 2")
+    # save_and_open_page
   end
 
   # describe 'user can see the correct range for rating value' do
