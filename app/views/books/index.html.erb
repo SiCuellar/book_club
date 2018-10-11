@@ -7,4 +7,5 @@
   <p>Author(s): <% book.authors.each do |author| %>
                 <%=                    author.name %>
                 <%                            end %>
+  <p>Rating: <%= book.average_rating %><p>
 <% end %>
