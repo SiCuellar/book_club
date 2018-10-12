@@ -23,18 +23,7 @@ describe 'book index' do
   end
 
 
-  it 'user can see all book information' do
-    visit '/books'
-
-    expect(page).to have_content("Title: #{@book_1.title}")
-    expect(page).to have_content("Publication year: #{@book_1.year_published}")
-    expect(page).to have_content("Title: #{@book_2.title}")
-    expect(page).to have_content("Page Count: #{@book_2.page_count}")
-    expect(page).to have_content("Page Count: #{@book_3.page_count}")
-    expect(page).to have_content("Publication year: #{@book_3.year_published}")
-    expect(page).to have_content("Publication year: #{@book_3.year_published}")
-    expect(page).to have_content("Author(s): #{@author_1.name}")
-  end
+  
 
   it 'user can see total book ratings and average' do
     visit '/books'
@@ -42,8 +31,25 @@ describe 'book index' do
     expect(page).to have_content("Rating: 2.3")
     expect(page).to have_content("Total Reviews: 2")
   end
-  # save_and_open_page
 
-  
+  xit 'user can click links to sort books(6 different sorting ways)' do
+    visit '/books'
+
+    click_on('Average Rating (ascending)')
+    expect(current_path).to eq('/books?sort=rating&direction=asc')
+    expect(page).to click_on('Average Rating (descending)')
+    expect(page).to click_on('Number of Pages (ascending)')
+    expect(page).to click_on('Number of Pages (descending)')
+    expect(page).to click_on('Number of reviews (ascending)')
+    expect(page).to click_on('Number of reviews (descending)')
+  end
+
+ #  describe 'Sorting Methods' do
+ #    within(book-card)
+ #
+ #    fill_in('book',with: "adfasdfad")
+ #  end
+ # make sure to check how to actually test this?
+
 
 end

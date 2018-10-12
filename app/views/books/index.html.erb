@@ -1,12 +1,31 @@
 <h1> Welcome to the Book Pub </h1>
 
-<% @books.each do |book| %>
-  <h2> Title: <%= book.title %></h2>
-  <p>Publication year: <%= book.year_published %> </p>
-  <p>Page Count: <%= book.page_count %> </p>
-  <p>Author(s): <% book.authors.each do |author| %>
-                <%=                    author.name %>
-                <%                            end %>
-  <p>Rating: <%= book.average_rating %><p>
-  <p>Total Reviews: <%= book.review_count %><p>
-<% end %>
+<section>
+<h2>Sort By</h2>
+<%= link_to '<button type="">Average Rating (ascending)</button>'.html_safe, '/books?sort=ratingasc' %>
+<%= link_to '<button type="">Average Rating (descending)</button>'.html_safe, '/books' %>
+<%= link_to '<button type="">Number of Pages (ascending)</button>'.html_safe, '/books' %>
+<%= link_to '<button type="">Number of Pages (descending)</button>'.html_safe, '/books' %>
+<%= link_to '<button type="">Number of reviews (ascending)</button>'.html_safe, '/books' %>
+<%= link_to '<button type="">Number of reviews (descending)</button>'.html_safe, '/books' %>
+</section>
+
+
+<article>
+<% card = 0 %>
+
+
+      <% @books.each do |book| %>
+      <section class="book-card <%= card += 1 %>">
+        <h2> Title: <%= book.title %></h2>
+        <p>Publication year: <%= book.year_published %> </p>
+        <p>Page Count: <%= book.page_count %> </p>
+        <p>Author(s): <% book.authors.each do |author| %>
+                      <%=                    author.name %>
+                      <%                            end %>
+        <p>Rating: <%= book.average_rating %><p>
+        <p>Total Reviews: <%= book.review_count %><p>
+        </section>
+      <% end %>
+
+</article>

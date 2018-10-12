@@ -15,4 +15,15 @@ class Book < ApplicationRecord
   def review_count
     reviews.count
   end
+
+  # def sort(params)
+  #
+  # end
+
+  def self.sort_avg_rating_asc
+    select('books.*, AVG(rating) AS avg_rating')
+    .joins(:reviews)
+    .group(:id)
+    .order('avg_rating DESC')
+  end
 end
