@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe Book, type: :model do
 
-
   describe 'Validations' do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:page_count) }
@@ -37,8 +36,21 @@ describe Book, type: :model do
 
     it ".sort_avg_rating_asc" do
       sorting = Book.sort_avg_rating_asc
+      expect(sorting.first.title).to eq("The Count of Monte Cristo")
+    end
+
+    it ".sort_avg_rating_desc" do
+      sorting = Book.sort_avg_rating_desc
       expect(sorting.first.title).to eq("The Road")
     end
+
+    it ".sort_avg_pages_asc " do
+      sorting = Book.sort_pages_asc
+      expect(sorting.first.title).to eq("The Count of Monte Cristo")
+    end
+
+    # it ".sort_"
+
   end
 
 
