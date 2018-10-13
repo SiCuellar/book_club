@@ -49,7 +49,10 @@ describe Book, type: :model do
       expect(sorting.first.title).to eq("The Count of Monte Cristo")
     end
 
-    # it ".sort_"
+    it ".sort_avg_pages_desc" do
+      sorting = Book.sort_pages_desc
+      expect(sorting.first.title).to eq("Crime and Punishment")
+    end
 
   end
 

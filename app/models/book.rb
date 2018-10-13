@@ -33,4 +33,8 @@ class Book < ApplicationRecord
   def self.sort_pages_asc
     order(:page_count)
   end
+
+  def self.sort_pages_desc
+    order('page_count DESC')
+  end
 end
