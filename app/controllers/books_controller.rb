@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all
+    @books = Book.check_params(params)
   end
-
 end
