@@ -19,41 +19,64 @@ describe Book, type: :model do
       @user_1 = User.create(name: "Silver")
       @user_2 = User.create(name: "Tom")
 
-      @book_1 = Book.create!(title: "The Count of Monte Cristo", page_count: 346, year_published: 1844)
-      @book_2  = Book.create!(title: "The Road", page_count: 349, year_published: 1999)
-      @book_3 = Book.create!(title: "Crime and Punishment", page_count: 458, year_published: 1866)
+      @book_1 = Book.create!(title: "book1", page_count: 346, year_published: 1844)
+      @book_2  = Book.create!(title: "book2", page_count: 349, year_published: 1999)
+      @book_3 = Book.create!(title: "book3", page_count: 458, year_published: 1866)
 
 
       @author_1 = @book_1.authors.create(name: "Alexander Dumas")
       @author_2 = @book_2.authors.create(name: "Something McCormick")
       @author_3 = @book_3.authors.create(name: "Fyodor Dostoyevsky")
 
-      @review_1 = @user_1.reviews.create(title: "This Sucked", review: "There are ways.", rating: 1.0, book_id: @book_1.id)
-      @review_2 = @user_1.reviews.create(title: "Basic", review: "This was okay.", rating: 3.0, book_id: @book_1.id)
-      @review_3 = @user_2.reviews.create(title: "Awesome", review: "Best book ever.", rating: 5.0, book_id: @book_2.id)
-      @review_4 = @user_2.reviews.create(title: "Meh!", review: "I do not even know.", rating: 3.0, book_id: @book_2.id)
+      @review_1 = @user_1.reviews.create(title: "t1", review: "review 1", rating: 1.0, book_id: @book_1.id)
+      @review_2 = @user_1.reviews.create(title: "t2", review: "review 2", rating: 1.2, book_id: @book_1.id)
+      @review_3 = @user_1.reviews.create(title: "t3", review: "review 3", rating: 1.3, book_id: @book_1.id)
+      @review_4 = @user_2.reviews.create(title: "t4", review: "review 4", rating: 2.0, book_id: @book_2.id)
+      @review_5 = @user_2.reviews.create(title: "t5", review: "review 5", rating: 2.1, book_id: @book_2.id)
+      @review_6 = @user_2.reviews.create(title: "t6", review: "review 6", rating: 3.0, book_id: @book_3.id)
     end
 
-    it ".sort_avg_rating_asc" do
-      sorting = Book.sort_avg_rating_asc
-      expect(sorting.first.title).to eq("The Count of Monte Cristo")
+    it '.sort_avg_rating_asc' do
+      params = {sort: "rating_asc"}
+      first, *,last = Book.check_params(params)
+      expect(first.title).to eq(@book_1.title)
+      expect(last.title).to eq(@book_3.title)
     end
 
-    it ".sort_avg_rating_desc" do
-      sorting = Book.sort_avg_rating_desc
-      expect(sorting.first.title).to eq("The Road")
+    it '.sort_avg_rating_desc' do
+      params = {sort: "rating_desc"}
+      first, *,last = Book.check_params(params)
+      expect(first.title).to eq(@book_3.title)
+      expect(last.title).to eq(@book_1.title)
     end
 
-    it ".sort_avg_pages_asc " do
-      sorting = Book.sort_pages_asc
-      expect(sorting.first.title).to eq("The Count of Monte Cristo")
+    it '.sort_review_count_desc' do
+      params = {sort: "review_count_desc"}
+      first, *,last = Book.check_params(params)
+      expect(first.title).to eq(@book_1.title)
+      expect(last.title).to eq(@book_3.title)
     end
 
-    it ".sort_avg_pages_desc" do
-      sorting = Book.sort_pages_desc
-      expect(sorting.first.title).to eq("Crime and Punishment")
+    it '.sort_review_count_asc' do
+      params = {sort: "review_count_asc"}
+      first, *,last = Book.check_params(params)
+      expect(first.title).to eq(@book_3.title)
+      expect(last.title).to eq(@book_1.title)
     end
 
+    it '.sort_page_asc' do
+      params = {sort: "page_asc"}
+      first, *,last = Book.check_params(params)
+      expect(first.title).to eq(@book_1.title)
+      expect(last.title).to eq(@book_3.title)
+    end
+
+    it '.sort_page_desc' do
+      params = {sort: "page_desc"}
+      first, *,last = Book.check_params(params)
+      expect(first.title).to eq(@book_3.title)
+      expect(last.title).to eq(@book_1.title)
+    end
   end
 
 

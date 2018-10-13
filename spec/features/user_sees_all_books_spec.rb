@@ -11,7 +11,6 @@ describe 'book index' do
     @book_2  = Book.create!(title: "The Road", page_count: 349, year_published: 1999)
     @book_3 = Book.create!(title: "Crime and Punishment", page_count: 458, year_published: 1866)
 
-
     @author_1 = @book_1.authors.create(name: "Alexander Dumas")
     @author_2 = @book_2.authors.create(name: "Something McCormick")
     @author_3 = @book_3.authors.create(name: "Fyodor Dostoyevsky")
@@ -22,9 +21,6 @@ describe 'book index' do
     @review_4 = @user_2.reviews.create(title: "Meh!", review: "I do not even know.", rating: 3.0, book_id: @book_2.id)
   end
 
-
-  
-
   it 'user can see total book ratings and average' do
     visit '/books'
 
@@ -32,17 +28,29 @@ describe 'book index' do
     expect(page).to have_content("Total Reviews: 2")
   end
 
-  xit 'user can click links to sort books(6 different sorting ways)' do
-    visit '/books'
-
-    click_on('Average Rating (ascending)')
-    expect(current_path).to eq('/books?sort=rating&direction=asc')
-    expect(page).to click_on('Average Rating (descending)')
-    expect(page).to click_on('Number of Pages (ascending)')
-    expect(page).to click_on('Number of Pages (descending)')
-    expect(page).to click_on('Number of reviews (ascending)')
-    expect(page).to click_on('Number of reviews (descending)')
-  end
+  # xit 'user can click links to sort books(6 different sorting ways)' do
+  #   visit '/books'
+  #   # save_and_open_page
+  #   y = page.find("#sort_buttons")
+  #   x = y.all("a").first
+  #   click_on(x)
+  #   expect(current_path).to eq('/books?sort=rating_asc')
+  #
+  #   click_on('Average Rating (ascending)')
+  #   expect(current_path).to eq('/books?sort=rating&direction=asc')
+  #
+  #   click_on('Average Rating (ascending)')
+  #   expect(current_path).to eq('/books?sort=rating&direction=asc')
+  #
+  #   click_on('Average Rating (ascending)')
+  #   expect(current_path).to eq('/books?sort=rating&direction=asc')
+  #
+  #   click_on('Average Rating (ascending)')
+  #   expect(current_path).to eq('/books?sort=rating&direction=asc')
+  #
+  #   click_on('Average Rating (ascending)')
+  #   expect(current_path).to eq('/books?sort=rating&direction=asc')
+  # end
 
  #  describe 'Sorting Methods' do
  #    within(book-card)
