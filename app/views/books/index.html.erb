@@ -11,7 +11,17 @@
 </section>
 
 
-<article>
+<section id="stats">
+  <h2>Statistics</h2>
+  <p>Top Books: <%= @books.top_books %> </p>
+
+
+
+</section>
+
+
+
+<section id="book_loop">
 <% card = 0 %>
 
       <% @books.each do |book| %>
@@ -27,4 +37,4 @@
         </section>
       <% end %>
 
-</article>
+</section>

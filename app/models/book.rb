@@ -34,7 +34,7 @@ class Book < ApplicationRecord
 ###########-------------sorting-----------##########
   def self.book_sort_base
     select('books.*, AVG(rating) AS avg_rating, COUNT(reviews.rating) AS rating_count')
-    .joins(:reviews)
+    .left_outer_joins(:reviews)
     .group(:id)
   end
 
@@ -61,4 +61,14 @@ class Book < ApplicationRecord
   def self.sort_review_count_desc
     order('rating_count DESC')
   end
+
+  def self.top_books
+    order('avg_rating DESC').limit(3)
+  end
+
+  def self.garbage_books
+    order('avg_rating ASC').limit(3)
+  end
+
+
 end
