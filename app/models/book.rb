@@ -62,13 +62,13 @@ class Book < ApplicationRecord
     order('rating_count DESC')
   end
 
+######---Statistics----######
+#ask about stats section#
   def self.top_books
-    order('avg_rating DESC').limit(3)
+    reorder('avg_rating DESC').limit(3)
   end
 
   def self.garbage_books
-    order('avg_rating ASC').limit(3)
+    reorder('avg_rating ASC').limit(3)
   end
-
-
 end

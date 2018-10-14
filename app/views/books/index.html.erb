@@ -13,8 +13,13 @@
 
 <section id="stats">
   <h2>Statistics</h2>
-  <p>Top Books: <%= @books.top_books %> </p>
-
+  <p> <b>Top Books:</b> <% @books.top_books.each do |book| %>
+                                    <ul> <%= book.title %></ul>
+                                     <% end %> <br>
+      <b>Bleh Books:</b> <% @books.garbage_books.each do |book| %>
+                                    <ul><%= book.title %></ul>
+                                    <% end %>
+  </p>
 
 
 </section>
