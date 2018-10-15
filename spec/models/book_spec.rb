@@ -77,9 +77,33 @@ describe Book, type: :model do
       expect(first.title).to eq(@book_3.title)
       expect(last.title).to eq(@book_1.title)
     end
+
+    it '.top_three_rated_books' do
+      params = {}
+      books = Book.check_params(params)
+      book_set = books.top_books
+
+      expect(book_set.length).to eq(3)
+      expect(book_set.first.title).to eq(@book_3.title)
+    end
+
+    it '.garbage_books' do
+      params = {}
+      books = Book.check_params(params)
+      book_set = books.garbage_books
+
+      expect(book_set.length).to eq(3)
+      expect(book_set.first.title).to eq(@book_1.title)
+    end
+
+    xit '.top_users' do
+      params = {}
+      books = Book.check_params(params)
+      book_set = books.garbage_books
+
+      expect(book_set.length).to eq(3)
+      expect(book_set.first.title).to eq(@book_1.title)
+    end
+
   end
-
-
-
-
 end
