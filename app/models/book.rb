@@ -63,7 +63,7 @@ class Book < ApplicationRecord
   end
 
 ######---Statistics----######
-#ask about stats section#
+#ask about stats section cahnging after sorting differently#
   def self.top_books
     reorder('avg_rating DESC').limit(3)
   end
