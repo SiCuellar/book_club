@@ -44,13 +44,11 @@ describe 'book index' do
   end
 
   descirbe 'Adding a book (section)' do
-    it 'user can click button'
+    it 'user can click button' do
+      visit books_path
 
-
-
-
-
-
+      expect(page).to have_content("Add Book")
+    end
 
   end
   # save_and_open_page
