@@ -42,6 +42,17 @@ describe 'book index' do
     expect(page).to have_content("Rating: 2.3")
     expect(page).to have_content("Total Reviews: 2")
   end
+
+  descirbe 'Adding a book (section)' do
+    it 'user can click button'
+
+
+
+
+
+
+
+  end
   # save_and_open_page
 
   # describe 'user can see the correct range for rating value' do
