@@ -13,7 +13,6 @@ describe 'user can create a book' do
     fill_in 'book[page_count]', with: book_page_count
 
     click_on "Create Book!"
-    # save_and_open_page
 
     expect(current_path).to eq("/books/#{Book.last.id}")
     expect(page).to have_content(book_name)
