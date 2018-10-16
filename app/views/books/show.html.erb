@@ -1,25 +1,30 @@
-<section id="book">
-<h2><%= @book.title %> </h2>
-  <% @book.authors.each do |author| %>
-<b>Author(s):</b> <%= author.name %> </br>
-  <% end %>
-<b>Page Count:</b> <%= @book.page_count %> </br>
-<b>Publication Year:</b> <%= @book.year_published %>
-</section>
+  <section id="book">
+  <h2><%= @book.title %> </h2>
+    <% @book.authors.each do |author| %>
+  <b>Author(s):</b> <%= author.name %> </br>
+    <% end %>
+  <b>Page Count:</b> <%= @book.page_count %> </br>
+  <b>Publication Year:</b> <%= @book.year_published %>
+  </section>
 
-<section id="reviews">
-  <%= @reviews.each do |review| %> </br>
-  <b>Review Title:</b> <%= review.title %> </br>
-  <b>Rating :</b> <%= review.rating %> </br>
-  <b>Response:</b> <%= review.review %> </br>
-  <% end %>
+  <section id="reviews">
+    <% @reviews.each do |review| %> </br>
+    <b>Review Title:</b> <%= review.title %> </br>
+    <b>Rating :</b> <%= review.rating %> </br>
+    <b>Response:</b> <%= review.review %> </br>
+    <% end %>
+  </section>
 
-</section>
+  <section id="Stats">
+    <h2>Statistics</h2>
+    <% @reviews.top_reviews.each do |top_rev| %>
+      <ul>
+      <li><b> Review Title:</b>
+      <%= top_rev.title %></li>
+      <li><b> Rating:</b>
+      <%= top_rev.rating %></li>
 
-<section id="Stats">
-  <h2>Statistics</h2>
-  <%= @reviews.top_reviews %>
-  <%= @reviews.low_reviews %>
+      </ul>
+    <% end %> <br>
 
-
-</section>
+  </section>

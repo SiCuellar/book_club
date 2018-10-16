@@ -43,7 +43,14 @@ describe 'book index' do
     expect(page).to have_content("Total Reviews: 2")
   end
 
-  
+  it 'user can see correct rating order' do
+    visit books_path
+
+
+
+  end
+
+
   # save_and_open_page
 
   # describe 'user can see the correct range for rating value' do
