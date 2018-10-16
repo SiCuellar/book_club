@@ -1,0 +1,18 @@
+<%= form_for @book do |f| %>
+  <%= f.label :Title %>:
+  <%= f.text_field :title, placeholder: "Please enter a book title" %>
+
+
+  <%= f.label :author, "Author(s)" %>
+  <%= f.text_field :authors, placeholder: "Please enter a book title" %>
+
+  <%= f.label :Page_Count, "Page Count" %>:
+  <%= f.text_field :page_count, placeholder: "number of pages" %>
+
+  <%= f.label :Publish_year, "Publication Year" %>:
+  <%= f.text_field :year_published, placeholder: "Publication Year" %>
+
+  <%= f.submit"Create Book!" %>
+
+
+<% end %>
