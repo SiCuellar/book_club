@@ -8,7 +8,6 @@ class BooksController < ApplicationController
   end
 
   def create
-    # binding.pry
     if Author.find_by_name(params[:book][:authors].downcase)
       author = Author.find_by_name(params[:authors])
     else
@@ -29,8 +28,6 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @reviews = @book.reviews
   end
-
-
 
   private
 
