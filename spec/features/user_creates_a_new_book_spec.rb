@@ -15,9 +15,9 @@ describe 'user can create a book' do
     click_on "Create Book!"
     # save_and_open_page
 
+    expect(current_path).to eq("/books/#{Book.last.id}")
     expect(page).to have_content(book_name)
     expect(page).to have_content(book_author)
-    expect(page).to have_content(book_page_count)
-    expect(current_path).to eq("/books/#{Book.last.id}")
+    expect(page).to have_content("Page Count: #{book_page_count}")
   end
 end
