@@ -25,7 +25,12 @@ class BooksController < ApplicationController
     book.authors << author
   end
 
-  
+  def show
+    @book = Book.find(params[:id])
+    # @reviews = @book.reviews
+  end
+
+
 
   private
 
