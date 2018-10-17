@@ -33,7 +33,7 @@ class Book < ApplicationRecord
 
 ###########-------------sorting-----------##########
   def self.book_sort_base
-    select('books.*, AVG(rating) AS avg_rating, COUNT(reviews.rating) AS rating_count')
+    select('books.*, coalesce(AVG(rating),0) AS avg_rating, COUNT(reviews.rating) AS rating_count')
     .left_outer_joins(:reviews)
     .group(:id)
   end

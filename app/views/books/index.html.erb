@@ -1,45 +1,49 @@
 <h1> Welcome to the Book Pub </h1>
 
-<section id="sort_buttons">
-<h2>Sort By</h2>
-<%= link_to '<button type="">Average Rating (ascending)</button>'.html_safe, '/books?sort=rating_asc' %>
-<%= link_to '<button type="">Average Rating (descending)</button>'.html_safe, '/books?sort=rating_desc' %>
-<%= link_to '<button type="">Number of Pages (ascending)</button>'.html_safe, '/books?sort=page_asc' %>
-<%= link_to '<button type="">Number of Pages (descending)</button>'.html_safe, '/books?sort=page_desc' %>
-<%= link_to '<button type="">Number of reviews (ascending)</button>'.html_safe, '/books?sort=review_count_asc' %>
-<%= link_to '<button type="">Number of reviews (descending)</button>'.html_safe, '/books?sort=review_count_desc' %>
-</section>
+  <section id="sort_buttons">
+    <h2>Sort By</h2>
+    <%= link_to '<button type="">Average Rating (ascending)</button>'.html_safe, '/books?sort=rating_asc' %>
+    <%= link_to '<button type="">Average Rating (descending)</button>'.html_safe, '/books?sort=rating_desc' %>
+    <%= link_to '<button type="">Number of Pages (ascending)</button>'.html_safe, '/books?sort=page_asc' %>
+    <%= link_to '<button type="">Number of Pages (descending)</button>'.html_safe, '/books?sort=page_desc' %>
+    <%= link_to '<button type="">Number of reviews (ascending)</button>'.html_safe, '/books?sort=review_count_asc' %>
+    <%= link_to '<button type="">Number of reviews (descending)</button>'.html_safe, '/books?sort=review_count_desc' %>
+  </section>
 
+  <section id="stats">
+    <h2>Statistics</h2>
+    <p> <b>Top Books:</b>
+      <% @books.top_books.each do |book| %>
+        <ul>
+          <li> <%= book.title %></li>
+        </ul>
+      <% end %> <br>
 
-<section id="stats">
-  <h2>Statistics</h2>
-  <p> <b>Top Books:</b> <% @books.top_books.each do |book| %>
-                                    <ul> <%= book.title %></ul>
-                                     <% end %> <br>
-      <b>Bleh Books:</b> <% @books.garbage_books.each do |book| %>
-                                    <ul><%= book.title %></ul>
-                                    <% end %>
-  </p>
-
-</section>
+      <b>Bleh Books:</b>
+      <% @books.garbage_books.each do |book| %>
+        <ul>
+          <li><%= book.title %></li>
+        </ul>
+      <% end %>
+    </p>
+  </section>
 
 <%= link_to '<button type="">Add a new Book</button>'.html_safe, '/books/new' %>
 
+  <section id="book_loop">
+  <% card = 0 %>
 
-<section id="book_loop">
-<% card = 0 %>
+        <% @books.each do |book| %>
+        <section class="book-card <%= card += 1 %>">
+          <h2> Title: <%= book.title %></h2>
+          <p>Publication year: <%= book.year_published %> </p>
+          <p>Page Count: <%= book.page_count %> </p>
+          <p>Author(s): <% book.authors.each do |author| %>
+                        <%=                    author.name %>
+                        <%                            end %>
+          <p>Rating: <%= book.average_rating %><p>
+          <p>Total Reviews: <%= book.review_count %><p>
+          </section>
+        <% end %>
 
-      <% @books.each do |book| %>
-      <section class="book-card <%= card += 1 %>">
-        <h2> Title: <%= book.title %></h2>
-        <p>Publication year: <%= book.year_published %> </p>
-        <p>Page Count: <%= book.page_count %> </p>
-        <p>Author(s): <% book.authors.each do |author| %>
-                      <%=                    author.name %>
-                      <%                            end %>
-        <p>Rating: <%= book.average_rating %><p>
-        <p>Total Reviews: <%= book.review_count %><p>
-        </section>
-      <% end %>
-
-</section>
+  </section>
